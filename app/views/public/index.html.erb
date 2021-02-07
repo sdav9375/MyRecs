@@ -1,6 +1,11 @@
-
 <main>
-  
+  <%= link_to new_rec_path, class: "text-decoration-none" do %>
+  <button type="button" class="btn btn-primary">Add Rec</button>
+  <% end %>
+
+  <% @user_profiles.each do |prof| %>
+    <%= prof.name =%>
+  <% end %>
+
 
 </main>
-

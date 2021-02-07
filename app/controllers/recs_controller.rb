@@ -1,4 +1,5 @@
 class RecsController < ApplicationController
+  before_action :authenticate_account!, except: [:index, :show]
   before_action :set_rec, only: [:show, :edit, :update, :destroy]
 
   # GET /recs
@@ -53,6 +54,6 @@ class RecsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def rec_params
-      params.require(:rec).permit(:title, :link, :description, :user_profile_id)
+      params.require(:rec).permit(:title, :link, :description, :user_id)
     end
 end

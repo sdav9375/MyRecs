@@ -1,4 +1,5 @@
 class UserProfilesController < ApplicationController
+  before_action :authenticate_account!, except: [:index, :show]
   before_action :set_user_profile, only: [:show, :edit, :update, :destroy]
 
   # GET /user_profiles
@@ -8,6 +9,7 @@ class UserProfilesController < ApplicationController
 
   # GET /user_profiles/1
   def show
+    @recs = Rec.all(@user)
   end
 
   # GET /user_profiles/new

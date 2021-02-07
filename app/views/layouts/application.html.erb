@@ -52,21 +52,20 @@
           </li>
           <li>
 
-<% if %>
-            <%= link_to new_user_session_path, class: " text-decoration-none" do %>
+            <%= link_to new_user_session_path, class: "text-decoration-none" do %>
             <span class="navbar-brand text-white">Log in</span>
             <% end %>
-<% else %>
 
-            <%= link_to destroy_user_session_path, class: " text-decoration-none" do %>
+            <%= link_to destroy_user_session_path, method: :delete, class: "text-decoration-none" do %>
             <span class="navbar-brand text-white">Log out</span>
             <% end %>
 
-<% end %>
           </li>
         </ul>
       </div>
     </div>
+
+
 
     <%
 =begin%>
@@ -79,6 +78,9 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
   <div class="container-fluid">
+
+
+
     <%= yield %>
 
 
