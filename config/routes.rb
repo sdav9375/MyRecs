@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :accounts
 
 
+  resources :recs
+  resources :user_profiles
+  devise_for :users
   get 'about', to: 'about#index'
   
   root to: "public#index"

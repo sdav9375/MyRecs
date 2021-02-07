@@ -31,30 +31,6 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <div class="container-fluid">
@@ -64,11 +40,10 @@
         <% end %>
       </div>
 
-      <button class="navbar-toggler bg-danger" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobileMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div id="sidebarMenu" class="navbar-collapse collapse">
+      <div id="mobileMenu" class="navbar-collapse collapse">
         <ul class="navbar-nav">
           <li>
             <%= link_to about_path, class: "text-decoration-none" do %>
@@ -77,9 +52,17 @@
           </li>
           <li>
 
-            <%= link_to new_account_session_path, class: " text-decoration-none" do %>
+<% if %>
+            <%= link_to new_user_session_path, class: " text-decoration-none" do %>
             <span class="navbar-brand text-white">Log in</span>
             <% end %>
+<% else %>
+
+            <%= link_to destroy_user_session_path, class: " text-decoration-none" do %>
+            <span class="navbar-brand text-white">Log out</span>
+            <% end %>
+
+<% end %>
           </li>
         </ul>
       </div>
@@ -98,125 +81,8 @@
   <div class="container-fluid">
     <%= yield %>
 
-    <footer>Footer</footer>
-    <%
-=begin%>
 
-    <div class="row">
-      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-        <div class="position-sticky pt-3">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
-                <span data-feather="home"></span>
-                Profile
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file"></span>
-                My Recs
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="shopping-cart"></span>
-                Categories
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="users"></span>
-                Following
-              </a>
-            </li>
-          </ul>
-
-
-        </div>
-      </nav>
-
-      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Profile</h1>
-          <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group me-2">
-              <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-            </div>
-            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-              <span data-feather="calendar"></span>
-              This week
-            </button>
-          </div>
-        </div>
-
-
-        <h2>Section title</h2>
-        <div class="table-responsive">
-          <table class="table table-striped table-sm">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1,001</td>
-                <td>Lorem</td>
-                <td>ipsum</td>
-                <td>dolor</td>
-                <td>sit</td>
-              </tr>
-              <tr>
-                <td>1,002</td>
-                <td>amet</td>
-                <td>consectetur</td>
-                <td>adipiscing</td>
-                <td>elit</td>
-              </tr>
-              <tr>
-                <td>1,003</td>
-                <td>Integer</td>
-                <td>nec</td>
-                <td>odio</td>
-                <td>Praesent</td>
-              </tr>
-              <tr>
-                <td>1,003</td>
-                <td>libero</td>
-                <td>Sed</td>
-                <td>cursus</td>
-                <td>ante</td>
-              </tr>
-              <tr>
-                <td>1,004</td>
-                <td>dapibus</td>
-                <td>diam</td>
-                <td>Sed</td>
-                <td>nisi</td>
-              </tr>
-              <tr>
-                <td>1,005</td>
-                <td>Nulla</td>
-                <td>quis</td>
-                <td>sem</td>
-                <td>at</td>
-              </tr>
-
-            </tbody>
-          </table>
-        </div>
-      </main>
-    </div>
-    <%
-=end%>
   </div>
-  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

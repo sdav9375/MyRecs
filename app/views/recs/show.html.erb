@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @rec.title %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @rec.link %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @rec.description %>
+</p>
+
+<p>
+  <strong>User profile:</strong>
+  <%= @rec.user_profile_id %>
+</p>
+
+<%= link_to 'Edit', edit_rec_path(@rec) %> |
+<%= link_to 'Back', recs_path %>
