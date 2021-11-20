@@ -6,9 +6,42 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @user_profile.user_id %>
+  <strong>Social:</strong>
+  <%= @user_profile.social %>
 </p>
+
+<p>
+  <strong>Intro:</strong>
+  <%= @user_profile.intro %>
+</p>
+
+<h1>Recs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Link</th>
+      <th>Description</th>
+      <th>User Id</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recs.each do |rec| %>
+    <tr>
+      <td><%= rec.title %></td>
+      <td><%= rec.link %></td>
+      <td><%= rec.description %></td>
+      <td><%= rec.user_id %></td>
+      <td><%= link_to 'Show', rec %></td>
+      <td><%= link_to 'Edit', edit_rec_path(rec) %></td>
+      <td><%= link_to 'Destroy', rec, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_user_profile_path(@user_profile) %> |
 <%= link_to 'Back', user_profiles_path %>

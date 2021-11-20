@@ -1,5 +1,6 @@
 class RecsController < ApplicationController
-  before_action :authenticate_account!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :set_rec, only: [:show, :edit, :update, :destroy]
 
   # GET /recs
@@ -9,6 +10,7 @@ class RecsController < ApplicationController
 
   # GET /recs/1
   def show
+    
   end
 
   # GET /recs/new
@@ -50,6 +52,10 @@ class RecsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_rec
       @rec = Rec.find(params[:id])
+    end
+
+    def set_user
+      @user = User.find(params[:user_id])
     end
 
     # Only allow a trusted parameter "white list" through.

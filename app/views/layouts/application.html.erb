@@ -32,8 +32,7 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-    <div class="container-fluid">
+  <nav class="navbar navbar-dark navbar-expand-lg bg-primary">
       <div class="p-2 ps-4">
         <%= link_to root_path, class: "text-decoration-none" do %>
         <h1 class="h3 mb-0 text-white">MyRecs</h1>
@@ -41,9 +40,11 @@
       </div>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobileMenu">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon text-white"></span>
       </button>
-      <div id="mobileMenu" class="navbar-collapse collapse">
+
+
+      <div id="mobileMenu" class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
           <li>
             <%= link_to about_path, class: "text-decoration-none" do %>
@@ -52,17 +53,19 @@
           </li>
           <li>
 
+            <% if user_signed_in? %>
+            <%= link_to destroy_user_session_path, method: :delete, class: "text-decoration-none" do %>
+            <span class="navbar-brand text-white">Log out</span>
+            <% end %>
+            <% else %>
+
             <%= link_to new_user_session_path, class: "text-decoration-none" do %>
             <span class="navbar-brand text-white">Log in</span>
             <% end %>
-
-            <%= link_to destroy_user_session_path, method: :delete, class: "text-decoration-none" do %>
-            <span class="navbar-brand text-white">Log out</span>
             <% end %>
 
           </li>
         </ul>
-      </div>
     </div>
 
 
@@ -77,13 +80,12 @@
   </nav>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  <div class="container-fluid">
-
-
+  <div class="container-fluid d-flex justify-content-center">
+    <div>
 
     <%= yield %>
 
-
+    </div>
   </div>
 
 </body>

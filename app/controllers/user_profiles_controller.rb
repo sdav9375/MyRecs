@@ -1,6 +1,7 @@
 class UserProfilesController < ApplicationController
-  before_action :authenticate_account!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_user_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /user_profiles
   def index
@@ -9,7 +10,7 @@ class UserProfilesController < ApplicationController
 
   # GET /user_profiles/1
   def show
-    @recs = Rec.all(@user)
+    @recs = User.find(params[:id]).recs
   end
 
   # GET /user_profiles/new
@@ -50,11 +51,15 @@ class UserProfilesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_profile
-      @user_profile = UserProfile.find(params[:id])
+      @user_profile = User.find(params[:id]).user_profile
+    end
+
+    def set_user
+      @user = User.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
-    def user_profile_params
-      params.require(:user_profile).permit(:name, :user_id)
-    end
+    # def user_profile_params
+    #   params.require(:user_profile).permit(:name, :user_id)
+    # end
 end
